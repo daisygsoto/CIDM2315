@@ -5,7 +5,7 @@
 - Upload Homework 1.cs file
 
 09/16/2024
--Uploaded Homework2.cs and Homework3.cs file
+  -Uploaded Homework2.cs and Homework3.cs file
 
 09/23/2024
--Uploaded Homework3.cs file
+  -Uploaded Homework3.cs file
