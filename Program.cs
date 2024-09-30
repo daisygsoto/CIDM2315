@@ -1,67 +1,105 @@
-﻿namespace Homework4;
+﻿namespace Homework5;
 
 class Program
 {
     static void Main(string[] args)
     {
     //Code for Q1
-    //Q1 (4 points): Write a C# method that:
-    //takes as input 2 numbers and returns the largest one
-    //call this method in Main() and print the result.
     Console.WriteLine("Enter a value for a: ");
     int a = Convert.ToInt16(Console.ReadLine());
     Console.WriteLine("Enter a value for b: ");
     int b = Convert.ToInt16(Console.ReadLine());
-    int returned_largest = LargestNum(a,b);
-    Console.WriteLine($"The largest number is {returned_largest}");
+    int returned_largestab = LargestNum(a,b);
+    Console.WriteLine($"The largest number is {returned_largestab}");
 
 
-    // call question2
-    Console.WriteLine("Enter an integer N: ");
-    int n = Convert.ToInt16(Console.ReadLine());
-    Console.WriteLine("Enter the side of a shape (left or right): ");
-    string side = Console.ReadLine();
-    Console.WriteLine($"N is:{n}; Shape is {side}");
-    Question2(n,side);
-    
 
+    //call for Code Q2
+    Console.WriteLine("Enter a value for A: ");
+    int A = Convert.ToInt16(Console.ReadLine());
+    Console.WriteLine("Enter a value for B: ");
+    int B = Convert.ToInt16(Console.ReadLine());
+    Console.WriteLine("Enter a value for C: ");
+    int C = Convert.ToInt16(Console.ReadLine());
+    Console.WriteLine("Enter a value for D: ");
+    int D = Convert.ToInt16(Console.ReadLine());
+    int returned_largestq2 = Question2(A,B,C,D);
+    Console.WriteLine($"The largest number is {returned_largestq2}");
+
+
+
+    //call for Code Q3
+    Console.WriteLine("Please enter your username:    ");
+    string user_name = Console.ReadLine();
+    Console.WriteLine("Please enter your password:    ");
+    string pass_word = Console.ReadLine();
+    Console.WriteLine("Please enter password again:   ");
+    string pass_word2 = Console.ReadLine();
+    Console.WriteLine("Please enter your birthyear:   ");
+    int birth_year = Convert.ToInt16(Console.ReadLine());
+    createAccount(user_name, pass_word, pass_word2, birth_year);
+
+  
     }
+      //Code for Q1
+      //Write a C# method that:
+      //takes as input 2 numbers and returns the largest one
+      //call this method in Main() and print the result.
     static int LargestNum(int a, int b){
-        int greatest = (a > b)? a:b;
-        return greatest;
-    }
-    //Code for Q2
-    //take as an integer number N and a shape (left or right); 
-    //if the shape is left and N = 5, print values of N and shape, and a left-side triangle with 5 rows, like the following example:
-    //if the shape is right and N = 5, print values of N and shape, and a right-side triangle with 5 rows, like the following example:
-    static void Question2(int n, string side)
-    {
-        if (side == "left"){
-            PrintLeftTri(n);
+        int greatest;
+        if(a<b){
+            return b;
         }
         else{
-            PrintRightTri(n);
+            return a;
         }
+    }   
+    /*Code for Q2
+    get 4 integers as inputs from the keyboard
+    and returns the largest one
+    you should use the method from Q1 to solve this exercise. (You will lose 2 points if you didn’t use the method from Q1 to answer this question)
+    call this method in Main() and print the result.*/
+    static int Question2(int A, int B, int C, int D){
+        int max1 = LargestNum(A,B);
+        int max2 = LargestNum(C,D);
+        int max = LargestNum(max1, max2);
+        return max;
     }
-    static void PrintLeftTri(int n){
-        for(int i=1; i<=n; i++){
-            for(int j=1; j<=i; j++){
-                Console.Write("*");
-            }
-            Console.WriteLine();
-        }
+    //Code for Q3
+    static bool checkAge(int birth_year){
+	// calculate the age based on the birth_year (age = current_year - birth_year)
+    int current_year = 2024;
+    int age = current_year - birth_year;
+    if (age>=18){
+        return true;
     }
-    static void PrintRightTri(int n)
+    else{
+        return false;
+    }
+    }
+    static void createAccount(string user_name, string pass_word, string pass_word2, int birth_year){
+    if(checkAge(birth_year))
     {
-        for(int i=1; i<=n; i++){
-            for(int j=1; j<= n - i;j++){
-                Console.Write(" ");
-            }
-            for (int j =1; j<=i; j++){
-                Console.Write("*");
-            }
-            Console.WriteLine();
+        if(pass_word == pass_word2)
+        {
+        Console.WriteLine("Account is created successfully!");
         }
-    }    
-}
+        else
+        {
+            Console.WriteLine("Wrong Password");
+        }
+    }
+    else
+    {
+        Console.WriteLine("Could not create an account!");
+    }
+    }
+}   
 
+    
+
+    
+
+    
+
+ 
