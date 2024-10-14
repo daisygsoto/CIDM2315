@@ -1,105 +1,70 @@
-﻿namespace Homework5;
+﻿namespace Homework6;
 
 class Program
 {
     static void Main(string[] args)
     {
-    //Code for Q1
-    Console.WriteLine("Enter a value for a: ");
-    int a = Convert.ToInt16(Console.ReadLine());
-    Console.WriteLine("Enter a value for b: ");
-    int b = Convert.ToInt16(Console.ReadLine());
-    int returned_largestab = LargestNum(a,b);
-    Console.WriteLine($"The largest number is {returned_largestab}");
+        // Code for Q1 and Q2
+        Professor p1 = new Professor();
+        p1.profName = "Alice";
+        p1.classTeach = "Java";
+        p1.SetSalary(9000);
+        p1.printInfoP();
+        Professor p2 = new Professor();
+        p2.profName = "Bob";
+        p2.classTeach = "Math";
+        p2.SetSalary (8000);
+        p2.printInfoP();
 
+        Student s1 = new Student();
+        s1.studentName = "Lisa";
+        s1.classEnroll = "Java";
+        s1.SetGrade(90);
+        s1.printInfoS();
+        Student s2 = new Student();
+        s2.studentName = "Tom";
+        s2.classEnroll = "Math";
+        s2.SetGrade(80);
+        s2.printInfoS();
 
+        double diffSalary = p1.GetSalary() - p2.GetSalary();
+        double totalGrade = s1.GetGrade() + s2.GetGrade();
 
-    //call for Code Q2
-    Console.WriteLine("Enter a value for A: ");
-    int A = Convert.ToInt16(Console.ReadLine());
-    Console.WriteLine("Enter a value for B: ");
-    int B = Convert.ToInt16(Console.ReadLine());
-    Console.WriteLine("Enter a value for C: ");
-    int C = Convert.ToInt16(Console.ReadLine());
-    Console.WriteLine("Enter a value for D: ");
-    int D = Convert.ToInt16(Console.ReadLine());
-    int returned_largestq2 = Question2(A,B,C,D);
-    Console.WriteLine($"The largest number is {returned_largestq2}");
-
-
-
-    //call for Code Q3
-    Console.WriteLine("Please enter your username:    ");
-    string user_name = Console.ReadLine();
-    Console.WriteLine("Please enter your password:    ");
-    string pass_word = Console.ReadLine();
-    Console.WriteLine("Please enter password again:   ");
-    string pass_word2 = Console.ReadLine();
-    Console.WriteLine("Please enter your birthyear:   ");
-    int birth_year = Convert.ToInt16(Console.ReadLine());
-    createAccount(user_name, pass_word, pass_word2, birth_year);
-
-  
+        Console.WriteLine($"The difference salary between Alice and Bob is: {diffSalary}");
+        Console.WriteLine($"The total grade of Lisa and Tom are: {totalGrade}");
     }
-      //Code for Q1
-      //Write a C# method that:
-      //takes as input 2 numbers and returns the largest one
-      //call this method in Main() and print the result.
-    static int LargestNum(int a, int b){
-        int greatest;
-        if(a<b){
-            return b;
-        }
-        else{
-            return a;
-        }
-    }   
-    /*Code for Q2
-    get 4 integers as inputs from the keyboard
-    and returns the largest one
-    you should use the method from Q1 to solve this exercise. (You will lose 2 points if you didn’t use the method from Q1 to answer this question)
-    call this method in Main() and print the result.*/
-    static int Question2(int A, int B, int C, int D){
-        int max1 = LargestNum(A,B);
-        int max2 = LargestNum(C,D);
-        int max = LargestNum(max1, max2);
-        return max;
-    }
-    //Code for Q3
-    static bool checkAge(int birth_year){
-	// calculate the age based on the birth_year (age = current_year - birth_year)
-    int current_year = 2024;
-    int age = current_year - birth_year;
-    if (age>=18){
-        return true;
-    }
-    else{
-        return false;
-    }
-    }
-    static void createAccount(string user_name, string pass_word, string pass_word2, int birth_year){
-    if(checkAge(birth_year))
+
+    class Professor
     {
-        if(pass_word == pass_word2)
-        {
-        Console.WriteLine("Account is created successfully!");
+        public string profName;
+        public string classTeach;
+        private double salary; 
+
+        public void printInfoP(){
+        Console.WriteLine($"Professor {profName} teaches {classTeach} and the salary is: {GetSalary()}");
         }
-        else
-        {
-            Console.WriteLine("Wrong Password");
+        public void SetSalary(double salary_amount){
+            salary = salary_amount;
         }
+        public double GetSalary(){
+            return salary; 
+        }  
     }
-    else
+    
+    class Student
     {
-        Console.WriteLine("Could not create an account!");
+        public string studentName;
+        public string classEnroll;
+        private double studentGrade;
+
+        public void SetGrade(double newGrade){
+            studentGrade = newGrade;
+        }
+        public double GetGrade(){
+            return studentGrade;
+        }
+        public void printInfoS(){
+        Console.WriteLine($"Student {studentName} enrolled in {classEnroll} and the grade is: {GetGrade()}");
+        }
     }
-    }
-}   
-
-    
-
-    
-
-    
-
- 
+}
