@@ -1,70 +1,52 @@
-﻿namespace Homework6;
+﻿namespace Homework7;
 
 class Program
 {
     static void Main(string[] args)
     {
-        // Code for Q1 and Q2
-        Professor p1 = new Professor();
-        p1.profName = "Alice";
-        p1.classTeach = "Java";
-        p1.SetSalary(9000);
-        p1.printInfoP();
-        Professor p2 = new Professor();
-        p2.profName = "Bob";
-        p2.classTeach = "Math";
-        p2.SetSalary (8000);
-        p2.printInfoP();
+       Customer Alice = new Customer(input_cus_id: 110, input_cus_name:"Alice", input_cus_age:28 );
+       Alice.PrintCusInfo();
 
-        Student s1 = new Student();
-        s1.studentName = "Lisa";
-        s1.classEnroll = "Java";
-        s1.SetGrade(90);
-        s1.printInfoS();
-        Student s2 = new Student();
-        s2.studentName = "Tom";
-        s2.classEnroll = "Math";
-        s2.SetGrade(80);
-        s2.printInfoS();
+       Customer Bob = new Customer(input_cus_id: 111, input_cus_name:"Bob", input_cus_age:30);
+       Bob.PrintCusInfo();
 
-        double diffSalary = p1.GetSalary() - p2.GetSalary();
-        double totalGrade = s1.GetGrade() + s2.GetGrade();
+       Alice.ChangeID(220);
+       Alice.PrintCusInfo();
 
-        Console.WriteLine($"The difference salary between Alice and Bob is: {diffSalary}");
-        Console.WriteLine($"The total grade of Lisa and Tom are: {totalGrade}");
+       Bob.ChangeID(221);
+       Bob.PrintCusInfo();
+       
+       Alice.CompareAge(Bob);
     }
-
-    class Professor
-    {
-        public string profName;
-        public string classTeach;
-        private double salary; 
-
-        public void printInfoP(){
-        Console.WriteLine($"Professor {profName} teaches {classTeach} and the salary is: {GetSalary()}");
-        }
-        public void SetSalary(double salary_amount){
-            salary = salary_amount;
-        }
-        public double GetSalary(){
-            return salary; 
-        }  
-    }
+    class Customer
+{
+    private int cus_id;
+    public string cus_name;
+    public int cus_age;
     
-    class Student
-    {
-        public string studentName;
-        public string classEnroll;
-        private double studentGrade;
+    public Customer(int input_cus_id, string input_cus_name, int input_cus_age){
+    cus_id = input_cus_id;
+    cus_name = input_cus_name;
+    cus_age = input_cus_age;
+    }
 
-        public void SetGrade(double newGrade){
-            studentGrade = newGrade;
+    
+    public void ChangeID(int input_new_id){
+    cus_id = input_new_id;
+    }
+
+    
+    public void PrintCusInfo(){
+    Console.WriteLine($"Customer:{cus_id}, Name:{cus_name}, Age:{cus_age}");
+    }
+    public void CompareAge(Customer objCustomer){
+        if(this.cus_age > objCustomer.cus_age){
+            Console.WriteLine($"{this.cus_name} is older.");
         }
-        public double GetGrade(){
-            return studentGrade;
-        }
-        public void printInfoS(){
-        Console.WriteLine($"Student {studentName} enrolled in {classEnroll} and the grade is: {GetGrade()}");
+        else{
+            Console.WriteLine($"{objCustomer.cus_name} is older.");
         }
     }
+
+}
 }
