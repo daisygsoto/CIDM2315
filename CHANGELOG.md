@@ -12,3 +12,9 @@
 
 09/30/2024
 - Upload Homework5.cs file
+
+10/14/2024
+- Upload Homework6.cs file
+
+10/16/2024
+- Upload Homework7.cs file
